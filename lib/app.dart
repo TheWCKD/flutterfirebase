@@ -21,13 +21,13 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider.value(
           value: authenticationRepository,
-          child: BlocProvider(
-              create: (_) => AuthenticationBloc(
-                    authenticationRepository: authenticationRepository,
-                  )),
         )
       ],
-      child: AppView(),
+      child: BlocProvider<AuthenticationBloc>(
+        create: (context) => AuthenticationBloc(
+            authenticationRepository: authenticationRepository),
+        child: AppView(),
+      ),
     );
 
     //   return RepositoryProvider.value(
